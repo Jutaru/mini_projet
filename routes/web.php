@@ -17,12 +17,4 @@ Route::get('/', function () {
     return view('layouts.begin');
 });
 
-
-
-
-Route::get('/create',[PostController::class, 'create'])->name('posts.create');
-Route::post('/create',[PostController::class, 'store'])->name('posts.store');
-
-//Route::get('/create',[PostController::class, 'store'])->name('save.post');
-
-//Route::resource('posts','App\Http\Controllers\PostController', ['except' => ['update','delete']] );
+Route::resource('posts','PostController', ['except' => ['update','delete']] );

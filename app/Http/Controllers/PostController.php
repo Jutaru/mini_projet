@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+        return view('layouts.index');
     }
 
     /**
@@ -51,7 +51,6 @@ class PostController extends Controller
         $posts->description = $request->description;
         $posts->categorie = $request->category;
         $posts->save();
-        
         return back()->with('post_add','post added succefully');
     }
 
