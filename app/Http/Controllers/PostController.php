@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posts;
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('layouts.index');
+        $posts = DB::table('posts')->get();
+    
+        return view('posts.index',['post'=>$posts]);
+   
     }
 
     /**
@@ -26,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('layouts.app');
+        return view('posts.create');
     }
 
     /**
@@ -46,12 +49,12 @@ class PostController extends Controller
             'created_at'=> date("Y-m-d H:i:s")
         ]);
         return back()->with('post_add','post added succefully');*/
-        $posts = new Posts();
+        $posts = new Post();
         $posts->title = $request->title;
         $posts->description = $request->description;
         $posts->categorie = $request->category;
         $posts->save();
-        return back()->with('post_add','post added succefully');
+        return redirect()->route('posts.index')->with('success','Post créé avec succès.');
     }
 
 
@@ -61,9 +64,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -74,7 +77,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('posts.edit',compact('post'));
     }
 
     /**
@@ -84,9 +87,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'id' => 'required',
+            'titre' => 'required',
+            'description' => 'required',
+            'categorie' => 'required',
+        ]);
+    
+        $post->update($request->all());
+    
+        return redirect()->route('posts.index')
+                        ->with('success','Post mis à jour avec succès');
     }
 
     /**
@@ -97,6 +110,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produit->delete();
+    
+        return redirect()->route('posts.index')
+                        ->with('success','Post supprimé avec succès');
     }
 }
