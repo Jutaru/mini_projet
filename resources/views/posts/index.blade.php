@@ -37,9 +37,9 @@
 
 
             <td>
-                <form action="" method="POST">
+                <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
    
-                    <a class="btn btn-outline-primary" href="{{ route('posts.show',$post->id) }}">Afficher</a>
+                    <a class="btn btn-outline-primary" href="{{ route('posts.show', $post->id) }}">Afficher</a>
     
                     <a class="btn btn-outline-success" href="{{ route('posts.edit',$post->id) }}">Éditer</a>
    
@@ -53,6 +53,6 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center pagination-lg">
-    {!! $posts ?? ''->links('pagination::bootstrap-4') !!}
+        {{ $posts->links('pagination::bootstrap-4') }}
       </div>
 @endsection

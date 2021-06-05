@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->get();
+        $posts = DB::table('posts')->paginate(10);
         return view('posts.index',['posts'=>$posts]);
    
     }
@@ -74,7 +74,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
         return view('posts.edit',compact('post'));
     }
@@ -90,7 +90,7 @@ class PostController extends Controller
     {
         $request->validate([
             'id' => 'required',
-            'titre' => 'required',
+            'title' => 'required',
             'description' => 'required',
             'categorie' => 'required',
         ]);
@@ -107,11 +107,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function destroy($id)
+    public function destroy(Post $post)
     {
-        $produit->delete();
+        $post->delete();
     
         return redirect()->route('index')
                         ->with('success','Post supprimé avec succès');
-    }*/
+    }
 }

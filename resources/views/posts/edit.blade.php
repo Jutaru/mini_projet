@@ -7,7 +7,7 @@
                 <h2>Modifier le post</h2>
             </div>
             <div class="float-end">
-                <a class="btn btn-outline-primary" href="{{ route('posts.index') }}"> Retour</a>
+                <a class="btn btn-outline-primary" href="{{ route('index') }}"> Retour</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('posts.update',$post->npro) }}" method="POST">
+    <form action="{{ route('posts.edit',$post->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">
@@ -36,7 +36,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>Titre:</strong>
-                <input type="text" name="Titre" value="{{ $post->title }}" class="form-control" placeholder="Saisir un titre">
+                <input type="text" name="title" value="{{ $post->title }}" class="form-control" placeholder="Saisir un titre">
             </div>
         </div>
         </div>

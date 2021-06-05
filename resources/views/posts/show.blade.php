@@ -6,7 +6,7 @@
                 <h2> Afficher le post</h2>
             </div>
             <div class="float-end">
-                <a class="btn btn-outline-primary" href="{{ route('posts.index') }}"> Retour</a>
+                <a class="btn btn-outline-primary" href="{{ route('index') }}"> Retour</a>
             </div>
         </div>
     </div>
