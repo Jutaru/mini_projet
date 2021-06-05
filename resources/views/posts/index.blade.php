@@ -35,8 +35,20 @@
             <td>{{ $post->categorie }}</td>
         
 
-        <!-- destroy lenna -->
 
+            <td>
+                <form action="" method="POST">
+   
+                    <a class="btn btn-outline-primary" href="{{ route('posts.show',$post->id) }}">Afficher</a>
+    
+                    <a class="btn btn-outline-success" href="{{ route('posts.edit',$post->id) }}">Éditer</a>
+   
+                    @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-outline-danger">Supprimer</button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </table>

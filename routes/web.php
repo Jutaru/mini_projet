@@ -20,4 +20,6 @@ use App\Http\Controllers\PostController;
 //Route::resource('/posts', PostController::class);
 Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/create',[PostController::class, 'create'])->name('posts.create');
+Route::get('/show', [PostController::class, 'show'])->name('posts.show');
+Route::get('/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::post('/create',[PostController::class, 'store']);
