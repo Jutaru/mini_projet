@@ -22,7 +22,7 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Description/th>
+            <th>Description </th>
             <th>Categorie</th>
             <th width="280px">Action</th>
         </tr>
@@ -41,6 +41,6 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center pagination-lg">
-    {!! $posts ?? ''->links('pagination::bootstrap-4') !!}
+
       </div>
 @endsection
