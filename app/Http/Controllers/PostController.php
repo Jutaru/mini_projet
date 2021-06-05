@@ -17,8 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = DB::table('posts')->get();
-    
-        return view('posts.index',['post'=>$posts]);
+        return view('posts.index',['posts'=>$posts]);
    
     }
 
@@ -52,9 +51,9 @@ class PostController extends Controller
         $posts = new Post();
         $posts->title = $request->title;
         $posts->description = $request->description;
-        $posts->categorie = $request->category;
+        $posts->categorie = $request->categorie;
         $posts->save();
-        return redirect()->route('posts.index')->with('success','Post créé avec succès.');
+        return redirect()->route('index')->with('success','Post créé avec succès.');
     }
 
 
@@ -98,7 +97,7 @@ class PostController extends Controller
     
         $post->update($request->all());
     
-        return redirect()->route('posts.index')
+        return redirect()->route('index')
                         ->with('success','Post mis à jour avec succès');
     }
 
@@ -108,11 +107,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /*public function destroy($id)
     {
         $produit->delete();
     
-        return redirect()->route('posts.index')
+        return redirect()->route('index')
                         ->with('success','Post supprimé avec succès');
-    }
+    }*/
 }

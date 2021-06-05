@@ -13,10 +13,11 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('posts.index');
-});
+
 
 //Route::resource('posts','PostController', ['except' => ['update','delete']] );
 
-Route::resource('posts', PostsController::class);
+//Route::resource('/posts', PostController::class);
+Route::get('/', [PostController::class, 'index'])->name('index');
+Route::get('/create',[PostController::class, 'create'])->name('posts.create');
+Route::post('/create',[PostController::class, 'store']);
