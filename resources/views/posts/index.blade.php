@@ -53,10 +53,5 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center pagination-lg">
-<<<<<<< HEAD
-        {{ $posts->links('pagination::bootstrap-4') }}
-=======
-
->>>>>>> c709e719482e6c64cbc5f145128296beca82fc44
       </div>
 @endsection
