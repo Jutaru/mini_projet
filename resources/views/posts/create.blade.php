@@ -7,7 +7,7 @@
             <h2>Ajouter un nouveau post</h2>
         </div>
         <div class="float-end">
-            <a class="btn btn-outline-primary" href="{{ route('posts.index') }}"> Retour</a>
+            <a class="btn btn-outline-primary" href="{{ route('index') }}"> Retour</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
     </div>
 @endif
    
-<form action="{{ route('posts.store') }}" method="POST">
+<form action="{{ route('posts.create') }}" method="POST">
     @csrf
   
      <div class="row">
