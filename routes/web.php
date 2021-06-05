@@ -19,4 +19,9 @@ Route::get('/', function () {
 
 //Route::resource('posts','PostController', ['except' => ['update','delete']] );
 
-Route::resource('posts', PostsController::class);
+//Route::resource('posts', PostsController::class);
+
+Route::get('/', [PostController::class, 'index'])->name('index');
+Route::get('/create',[PostController::class, 'create'])->name('posts.create');
+Route::get('/edit/{id]',[PostController::class, 'edit'])->name('posts.edit');
+Route::post('/create',[PostController::class, 'store']);
