@@ -14,7 +14,9 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('layouts.begin');
+    return view('posts.index');
 });
 
-Route::resource('posts','PostController', ['except' => ['update','delete']] );
+//Route::resource('posts','PostController', ['except' => ['update','delete']] );
+
+Route::resource('posts', PostsController::class);
